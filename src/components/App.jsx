@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Section from './Section/Section';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
@@ -22,7 +22,10 @@ const notifyOptions = {
 };
 
 export default function App() {
-  const [contacts, setContacts] = useLocalStorage('contacts', '');
+  const [contacts, setContacts] = useLocalStorage(
+    LOCAL_KEY_CONTACTS,
+    contactsBook
+  );
   const [filter, setFilter] = useState('');
 
   const handlerResultChange = data => {
