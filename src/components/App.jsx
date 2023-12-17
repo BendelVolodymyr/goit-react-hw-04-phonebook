@@ -6,6 +6,7 @@ import Filter from './Filter/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import contactsBook from '../data/contacts.json';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 const LOCAL_KEY_CONTACTS = 'contacts';
 
@@ -21,17 +22,8 @@ const notifyOptions = {
 };
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem(LOCAL_KEY_CONTACTS)) ??
-      contactsBook
-    );
-  });
+  const [contacts, setContacts] = useLocalStorage('contacts', '');
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem(LOCAL_KEY_CONTACTS, JSON.stringify(contacts));
-  }, [contacts]);
 
   const handlerResultChange = data => {
     const { name, number } = data;
