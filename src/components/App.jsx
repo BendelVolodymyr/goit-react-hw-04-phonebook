@@ -21,9 +21,12 @@ const notifyOptions = {
 };
 
 export default function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem(LOCAL_KEY_CONTACTS)) ?? contactsBook
-  );
+  const [contacts, setContacts] = useState(() => {
+    return (
+      JSON.parse(window.localStorage.getItem(LOCAL_KEY_CONTACTS)) ??
+      contactsBook
+    );
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
