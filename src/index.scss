@@ -1,0 +1,71 @@
+@import-normalize;
+/* bring in normalize.css styles */
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    135deg,
+    #fdfbfb,
+    #ebedee,
+    #dbe6f6,
+    #c5796d,
+    #b7d4a8,
+    #a18cd1
+  );
+  background-size: 600% 600%;
+  animation: gradientBG 30s ease infinite;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    > section {
+      flex: 1;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+h3 {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  border-radius: 8px;
+  padding-left: 5px;
+  border: none;
+}
